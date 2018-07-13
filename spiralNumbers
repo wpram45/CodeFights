@@ -1,0 +1,71 @@
+def spiralNumbers(n):
+    arr=[]
+    x=0
+    y=0
+    current=1
+    direct="right"
+
+    for i in range(n):
+        arr.append([0 for i in range(n)])
+  
+    while current < n*n:
+        
+       
+        if direct=="right":
+           # print(y,x)
+            
+                
+            if len(arr[y])>x+1 and arr[y][x+1]==0:
+                    
+                arr[y][x]=current
+                
+                x+=1
+                current+=1
+            else:
+                
+                direct="down"
+                           
+                
+        elif direct=="down":
+            
+
+
+            if n>y+1 and arr[y+1][x]==0:
+                
+                arr[y][x]=current
+                
+                y+=1
+                current+=1
+            else:
+                direct="left"
+                
+
+        elif direct=="left":
+
+            
+            if n>x-1 and arr[y][x-1]==0:
+                #print(x,y,current)
+                arr[y][x]=current
+                
+                x-=1
+                current+=1
+            else:
+             direct="up"           
+
+
+        elif direct=="up":
+            
+
+            if y-1>-1 and arr[y-1][x]==0:
+                
+                
+                arr[y][x]=current
+                
+                y-=1
+                current+=1
+            else:
+                direct="right"
+
+    arr[y][x]=current
+    return arr
+print(spiralNumbers(5))
